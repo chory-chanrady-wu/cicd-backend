@@ -3,15 +3,16 @@ package com.chanrady.backend.mapper;
 import com.chanrady.backend.dto.ProductRequestDTO;
 import com.chanrady.backend.dto.ProductResponseDTO;
 import com.chanrady.backend.models.ProductModel;
+import com.chanrady.backend.models.CategoryModel;
 import java.time.LocalDateTime;
 
 public class ProductMapper {
-    public static ProductModel toEntity(ProductRequestDTO dto) {
+    public static ProductModel toEntity(ProductRequestDTO dto, CategoryModel category) {
         ProductModel product = new ProductModel();
         product.setName(dto.getName());
         product.setDescription(dto.getDescription());
         product.setPrice(dto.getPrice());
-        product.setCategoryId(dto.getCategoryId());
+        product.setCategory(category);
         product.setStock(dto.getStock());
         product.setPackaging(dto.getPackaging());
         product.setCreatedAt(LocalDateTime.now());
@@ -26,7 +27,7 @@ public class ProductMapper {
         dto.setName(product.getName());
         dto.setDescription(product.getDescription());
         dto.setPrice(product.getPrice());
-        dto.setCategoryId(product.getCategoryId());
+        dto.setCategoryId(product.getCategory() != null ? product.getCategory().getId() : 0);
         dto.setStock(product.getStock());
         dto.setPackaging(product.getPackaging());
         dto.setCreatedAt(product.getCreatedAt());
@@ -36,4 +37,3 @@ public class ProductMapper {
         return dto;
     }
 }
-
