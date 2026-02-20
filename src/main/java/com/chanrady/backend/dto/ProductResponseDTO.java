@@ -9,12 +9,11 @@ public class ProductResponseDTO {
     private String name;
     private String description;
     private double price;
-    private int categoryId;
     private int stock;
     private String packaging;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private LocalDateTime deletedAt;
     private boolean deleted;
+    private CategoryResponseDTO category; // Add related category info
 }
-
