@@ -43,5 +43,5 @@ jobs:
             --header 'Authorization: Bearer ${{ secrets.RAILWAY_API_KEY }}' \
             --header 'Content-Type: application/json' \
             --data '{
-              "query": "mutation { serviceInstanceUpdate(serviceId: \"3058ef45-f360-4e3c-afb7-2256fb7b3e92?environmentId=a648e635-d7a7-45fd-90d3-4d6b08340ed2\", projectId: \"a0900aa3-a9df-4e64-9cf1-3fd89d64f05c\", update: { source: { image: \"ghcr.io/${{ secrets.GHCR_USERNAME }}/cicd:latest\" } }) }"
+              "query": "mutation { serviceInstanceUpdate(serviceId: \"3058ef45-f360-4e3c-afb7-2256fb7b3e92\", projectId: \"a0900aa3-a9df-4e64-9cf1-3fd89d64f05c\", update: { source: { image: \"ghcr.io/${{ secrets.GHCR_USERNAME }}/cicd:latest\" } }) }"
             }'
