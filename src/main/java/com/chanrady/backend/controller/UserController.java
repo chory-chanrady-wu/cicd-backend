@@ -15,10 +15,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public List<UserResponseDTO> getAllUsers() {
-        return userService.getAllUsers();
-    }
+//    @GetMapping
+//    public List<UserResponseDTO> getAllUsers() {
+//        return userService.getAllUsers();
+//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserResponseDTO> getUserById(@PathVariable int id) {
