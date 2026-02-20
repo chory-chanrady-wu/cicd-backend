@@ -1,15 +1,10 @@
-package com.chanrady.backend.models;
+package com.chanrady.backend.dto;
 
-import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
 
-@Entity
 @Data
-@Table (name = "products")
-public class ProductModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProductResponseDTO {
     private int id;
     private String name;
     private String description;
@@ -22,3 +17,4 @@ public class ProductModel {
     private LocalDateTime deletedAt;
     private boolean deleted;
 }
+

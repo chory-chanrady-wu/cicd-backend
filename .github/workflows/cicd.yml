@@ -1,4 +1,47 @@
-name: cicd.yml
+name: CI/CD Assignment Backend
+
 on:
+  push:
+    branches:
+      - main
 
 jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Java
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 21
+
+      # Step 3: Make Maven wrapper executable
+      - name: Grant execute permission for Maven wrapper
+        run: chmod +x ./mvnw
+
+      # Step 4: Build project & push Docker image to GHCR
+      - name: Build & Push Docker image to GHCR
+        run: |
+          ./mvnw clean compile jib:build \
+            -Dimage=ghcr.io/${{ secrets.GHCR_USERNAME }}/cicd:latest \
+            -Djib.to.auth.username=${{ secrets.GHCR_USERNAME }} \
+            -Djib.to.auth.password=${{ secrets.GHCR_TOKEN }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-and-push
+    steps:
+      - name: Deploy to Railway via API
+        run: |
+          curl --request POST \
+            --url https://backboard.railway.app/graphql/v2 \
+            --header 'Authorization: Bearer ${{ secrets.RAILWAY_API_KEY }}' \
+            --header 'Content-Type: application/json' \
+            --data '{
+              "query": "mutation { serviceInstanceUpdate(serviceId: \"YOUR_SERVICE_ID\", projectId: \"a0900aa3-a9df-4e64-9cf1-3fd89d64f05c\", update: { source: { image: \"ghcr.io/${{ secrets.GHCR_USERNAME }}/cicd:latest\" } }) }"
+            }'
