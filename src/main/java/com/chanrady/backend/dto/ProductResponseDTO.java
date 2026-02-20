@@ -15,5 +15,5 @@ public class ProductResponseDTO {
     private LocalDateTime updatedAt;
     private LocalDateTime deletedAt;
     private boolean deleted;
-    private CategoryResponseDTO category; // Add related category info
+    private CategoryResponseDTO category;
 }
