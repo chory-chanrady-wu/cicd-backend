@@ -14,11 +14,14 @@ public class ProductModel {
     private String name;
     private String description;
     private double price;
-    private int categoryId;
     private int stock;
     private String packaging;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private LocalDateTime deletedAt;
     private boolean deleted;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private CategoryModel category;
 }

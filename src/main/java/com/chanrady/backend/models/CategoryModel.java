@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,4 +16,7 @@ public class CategoryModel {
     private String name;
     private String description;
     private LocalDateTime creationDate;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private List<ProductModel> products;
 }
