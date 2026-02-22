@@ -15,7 +15,7 @@ mvn spring-boot:run
 
 ## API Documentation
 
-After starting the application, access the Swagger UI at:
+Public URL at:
 
 ```
 https://cicdassignment.up.railway.app/
