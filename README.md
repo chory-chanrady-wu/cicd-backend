@@ -18,9 +18,14 @@ mvn spring-boot:run
 After starting the application, access the Swagger UI at:
 
 ```
-http://localhost:8080/swagger-ui.html
+https://cicdassignment.up.railway.app/
 ```
-
+## Public Endpoint
+```
+-  https://cicdassignment.up.railway.app/users
+-  https://cicdassignment.up.railway.app/products
+-  https://cicdassignment.up.railway.app/categories
+```
 ## Features
 
 - Product and Category management
