@@ -21,6 +21,7 @@ Public URL at:
 https://cicdassignment.up.railway.app/
 ```
 ## Public Endpoint
+https://cicdassignment.up.railway.app/swagger-ui/index.html
 ```
 -  https://cicdassignment.up.railway.app/users
 -  https://cicdassignment.up.railway.app/products
